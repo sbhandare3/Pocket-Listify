@@ -1,5 +1,7 @@
 package com.example.shreyas.pocketlistify;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.PersistableBundle;
@@ -17,6 +19,7 @@ import com.example.shreyas.pocketlistify.UtilityClasses.SQLiteDatabaseHelper;
 import com.example.shreyas.pocketlistify.UtilityClasses.TaskItem;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.taskList);
         adapter = new CustomAdapter(this, taskItems);
         listView.setAdapter(adapter);
+        notifyTasks();
 
         //if(!helper.isEmpty())
         loadData();
@@ -65,13 +69,6 @@ public class MainActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 123 || requestCode==700){
-            /*
-            SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
-            Gson gson = new Gson();
-            String json = mPrefs.getString("Task_Item", "");
-            TaskItem taskItem = gson.fromJson(json, TaskItem.class);
-            taskItems.add(taskItem);
-            */
             adapter.notifyDataSetChanged();
         }
     }
@@ -116,6 +113,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
 
+    public void notifyTasks(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY,4);
+        calendar.set(Calendar.MINUTE,0);
+        calendar.set(Calendar.SECOND,0);
+
+        Intent intent = new Intent(this,NotificationReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this,100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
     }
 }

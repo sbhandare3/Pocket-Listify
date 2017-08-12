@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.shreyas.pocketlistify">
 
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>﻿
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,6 +16,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -28,8 +31,11 @@
         <activity
             android:name=".ViewTask"
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
-
-        <activity android:name=".MainActivity" android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity android:name=".NotificationActivity"/>
+        <receiver android:name=".NotificationReceiver"/>
     </application>
 
 </manifest>

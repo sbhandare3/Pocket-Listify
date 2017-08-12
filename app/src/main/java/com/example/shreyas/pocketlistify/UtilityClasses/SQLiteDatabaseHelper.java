@@ -6,6 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 /**
  * Created by shreyas on 8/11/2017.
  */
@@ -56,6 +60,23 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         //Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " ORDER BY " + COLUMN_DATE + " DESC",null);
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " ORDER BY " + COLUMN_ID + " ASC",null);
+        return cursor;
+    }
+
+    public Cursor getTodaysEntries(){
+        Date date = new Date();
+        SimpleDateFormat df = new SimpleDateFormat("MM/dd/yy", Locale.US);
+        String todayDate = df.format(date);
+        SQLiteDatabase db = this.getReadableDatabase();
+        /*
+        String selectQuery = "SELECT lastchapter FROM Bookdetails WHERE bookpath=?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[] { fileName });
+        if (c.moveToFirst()) {
+            temp_address = c.getString(c.getColumnIndex("lastchapter"));
+        }
+        return cursor;
+        */
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_DATE + " = "+todayDate,null);
         return cursor;
     }
 
