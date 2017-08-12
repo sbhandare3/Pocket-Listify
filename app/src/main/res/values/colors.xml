@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2D3E50</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#2D3E50</color>
+    <color name="colorBack">#9ffcdf</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorGrey">#808080</color>
+
+    <!--priority colors-->
+    <color name="colorRed">#FF0000</color>
+    <color name="colorYellow">#d4d434</color>
+    <color name="colorGreen">#008000</color>
+
+    <array name="active_dots">
+        <item>@color/colorBack</item>
+        <item>@color/colorBack</item>
+        <item>@color/colorBack</item>
+        <item>@color/colorBack</item>
+    </array>
+
+    <array name="inactive_dots">
+        <item>@color/colorPrimary</item>
+        <item>@color/colorPrimary</item>
+        <item>@color/colorPrimary</item>
+        <item>@color/colorPrimary</item>
+    </array>
+
+</resources>

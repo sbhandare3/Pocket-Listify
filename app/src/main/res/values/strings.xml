@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Pocket Listify</string>
+
+    <string-array name="priority_array">
+        <item>High</item>
+        <item>Med</item>
+        <item>Low</item>
+        <item>N/A (default)</item>
+    </string-array>
+
+</resources>
