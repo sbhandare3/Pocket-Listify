@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.shreyas.pocketlistify.IntroductionScreens.PrefManager;
 import com.example.shreyas.pocketlistify.UtilityClasses.CustomAdapter;
 import com.example.shreyas.pocketlistify.UtilityClasses.SQLiteDatabaseHelper;
 import com.example.shreyas.pocketlistify.UtilityClasses.TaskItem;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     CustomAdapter adapter;
     public static ArrayList<TaskItem>taskItems;
     SQLiteDatabaseHelper helper;
+    private PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,12 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.taskList);
         adapter = new CustomAdapter(this, taskItems);
         listView.setAdapter(adapter);
-        notifyTasks();
+
+        // setup notification service
+        prefManager = new PrefManager(this);
+        if (prefManager.isFirstTimeStartService()) {
+            notifyTasks();
+        }
 
         //if(!helper.isEmpty())
         loadData();
@@ -88,11 +95,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         //After deleting, look at the db and reload the listview
+        loadData();
         adapter.notifyDataSetChanged();
     }
 
     public void loadData(){
         Cursor result = helper.getEntries();
+        taskItems.clear();
         while(result.moveToNext()){
             TaskItem listItem = new TaskItem();
             listItem.setId(Integer.parseInt(result.getString(0)));
@@ -116,9 +125,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void notifyTasks(){
+        prefManager.setNotificationService(false);
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY,15);
-        calendar.set(Calendar.MINUTE,43);
+        calendar.set(Calendar.HOUR_OF_DAY,9);
+        calendar.set(Calendar.MINUTE,0);
         calendar.set(Calendar.SECOND,0);
 
         Intent intent = new Intent(this,NotificationReceiver.class);

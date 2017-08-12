@@ -16,10 +16,10 @@
     <color name="colorGreen">#008000</color>
 
     <array name="active_dots">
-        <item>@color/colorBack</item>
-        <item>@color/colorBack</item>
-        <item>@color/colorBack</item>
-        <item>@color/colorBack</item>
+        <item>@color/colorBackDark</item>
+        <item>@color/colorBackDark</item>
+        <item>@color/colorBackDark</item>
+        <item>@color/colorBackDark</item>
     </array>
 
     <array name="inactive_dots">

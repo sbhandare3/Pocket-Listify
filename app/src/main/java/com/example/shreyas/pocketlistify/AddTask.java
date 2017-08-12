@@ -111,17 +111,6 @@ public class AddTask extends Activity {
             taskItems.add(taskItem); // add new task to list
             saveNewTask(); // save new task to db
 
-            // save item to sharedpref
-            /*
-            SharedPreferences  mPrefs = getPreferences(MODE_PRIVATE);
-            SharedPreferences.Editor prefsEditor = mPrefs.edit();
-            Gson gson = new Gson();
-            String json = gson.toJson(taskItem);
-            prefsEditor.putString("Task_Item", json);
-            prefsEditor.apply();
-            */
-
-            //Toast.makeText(this,"Task Added! "+t_name_str+" "+t_detail_str+" "+t_priority_str+" "+t_date_str,Toast.LENGTH_SHORT).show();
             Toast.makeText(this,"Task Added!",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent();
             setResult(Activity.RESULT_CANCELED, intent);

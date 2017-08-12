@@ -143,18 +143,7 @@ public class EditTask extends Activity {
             // update item and replace in arraylist.
             taskItems.set(pos,taskItem);
             updateOldTask();
-            // save item to sharedpref
 
-            /*
-            SharedPreferences  mPrefs = getPreferences(MODE_PRIVATE);
-            SharedPreferences.Editor prefsEditor = mPrefs.edit();
-            Gson gson = new Gson();
-            String json = gson.toJson(taskItem);
-            prefsEditor.putString("Task_Item", json);
-            prefsEditor.apply();
-            */
-
-            //Toast.makeText(this,"Task Edtied! "+t_name_str+" "+t_detail_str+" "+t_priority_str+" "+t_date_str,Toast.LENGTH_SHORT).show();
             Toast.makeText(this,"Task Updated!",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent();
             setResult(Activity.RESULT_CANCELED, intent);
