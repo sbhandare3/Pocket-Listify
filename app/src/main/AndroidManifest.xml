@@ -34,7 +34,7 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize" />
-        <activity android:name=".NotificationActivity"/>
+
         <receiver android:name=".NotificationReceiver"/>
     </application>
 

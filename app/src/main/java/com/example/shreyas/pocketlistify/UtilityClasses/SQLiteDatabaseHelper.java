@@ -63,21 +63,18 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Cursor getTodaysEntries(){
+    // get today's task count
+    public int getTodaysCount(){
         Date date = new Date();
         SimpleDateFormat df = new SimpleDateFormat("MM/dd/yy", Locale.US);
         String todayDate = df.format(date);
         SQLiteDatabase db = this.getReadableDatabase();
-        /*
-        String selectQuery = "SELECT lastchapter FROM Bookdetails WHERE bookpath=?";
-        Cursor cursor = db.rawQuery(selectQuery, new String[] { fileName });
-        if (c.moveToFirst()) {
-            temp_address = c.getString(c.getColumnIndex("lastchapter"));
-        }
-        return cursor;
-        */
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_DATE + " = "+todayDate,null);
-        return cursor;
+        String selection = "Date = ?";
+        String[] selectionArgs = {todayDate};
+        Cursor c = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null);
+        int result = c.getCount();
+        c.close();
+        return result;
     }
 
     // Custom method to return entries descending
@@ -101,21 +98,5 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COLUMN_PRIORITY,priority);
         db.update(TABLE_NAME,contentValues,"id = ?",new String[] {Integer.toString(pos)});
         return true;
-        //String updateQuery ="UPDATE "+TABLE_NAME+ " SET "+COLUMN_NAME+ " = "+name+", "+COLUMN_DETAIL+" = "+detail+", "+COLUMN_DATE+" = "+date+", "+COLUMN_PRIORITY+" = "+priority+" WHERE "+COLUMN_ID+" = " +pos;
-        //Cursor cursor = db.rawQuery(updateQuery,null);
-        //cursor.moveToFirst();
-        //cursor.close();
-    }
-
-    public boolean isEmpty (){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String count = "SELECT count(*) FROM table";
-        Cursor mcursor = db.rawQuery(count, null);
-        mcursor.moveToFirst();
-        int icount = mcursor.getInt(0);
-        if(icount>0)
-            return false;
-        else
-            return true;
     }
 }
