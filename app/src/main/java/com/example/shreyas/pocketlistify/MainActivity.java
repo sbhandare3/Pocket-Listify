@@ -11,7 +11,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.shreyas.pocketlistify.IntroductionScreens.PrefManager;
@@ -28,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
     CustomAdapter adapter;
     public static ArrayList<TaskItem>taskItems;
     SQLiteDatabaseHelper helper;
-    private PrefManager prefManager;
+    //private PrefManager prefManager;
+    Switch switchButton2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +45,29 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         // setup notification service
-        prefManager = new PrefManager(this);
-        if (prefManager.isFirstTimeStartService()) {
-            notifyTasks();
-        }
+        //prefManager = new PrefManager(this);
+        //if (prefManager.isFirstTimeStartService()) {
+
+        //}
 
         //if(!helper.isEmpty())
         loadData();
+
+        switchButton2 = (Switch) findViewById(R.id.switch1);
+
+        switchButton2.setChecked(false);
+        switchButton2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean bChecked) {
+                if (bChecked) {
+                    switchButton2.setText("Notify ON");
+                    notifyTasks();
+                } else {
+                    switchButton2.setText("Notify OFF");
+                    unsetNotifyTasks();
+                }
+            }
+        });
     }
 
     @Override
@@ -80,8 +99,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void addTaskPressed(View view){
-        startActivityForResult(new Intent(MainActivity.this, AddTask.class),123);
+    public void addTaskPressed(View view) {
+        startActivityForResult(new Intent(MainActivity.this, AddTask.class), 123);
     }
 
     //Delete function
@@ -125,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void notifyTasks(){
-        prefManager.setNotificationService(false);
+        //prefManager.setNotificationService(false);
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY,9);
         calendar.set(Calendar.MINUTE,0);
@@ -135,6 +154,13 @@ public class MainActivity extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this,100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
+    }
+
+    public void unsetNotifyTasks() {
+        Intent myIntent = new Intent(this,NotificationReceiver.class);
+        PendingIntent notifyIntent = PendingIntent.getService(MainActivity.this, 0, myIntent, 0);  // recreate it here before calling cancel
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.cancel(notifyIntent);
     }
 
     @Override
