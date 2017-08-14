@@ -58,7 +58,7 @@ Challenges: I didn't have too much experience with push notifactions and took a 
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2017] [Shreyas Sadanand Bhandare]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
