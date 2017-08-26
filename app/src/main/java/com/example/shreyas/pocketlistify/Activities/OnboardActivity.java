@@ -1,4 +1,4 @@
-package com.example.shreyas.pocketlistify.IntroductionScreens;
+package com.example.shreyas.pocketlistify.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,14 +11,13 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.shreyas.pocketlistify.MainActivity;
 import com.example.shreyas.pocketlistify.R;
+import com.example.shreyas.pocketlistify.UtilityClasses.PrefManager;
 
-public class onboardActivity extends AppCompatActivity {
+public class OnboardActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -104,7 +103,7 @@ public class onboardActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(onboardActivity.this, MainActivity.class));
+        startActivity(new Intent(OnboardActivity.this, MainActivity.class));
         finish();
     }
 

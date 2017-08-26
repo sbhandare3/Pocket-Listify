@@ -1,13 +1,12 @@
-package com.example.shreyas.pocketlistify;
+package com.example.shreyas.pocketlistify.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import static com.example.shreyas.pocketlistify.MainActivity.taskItems;
+import com.example.shreyas.pocketlistify.R;
 
 public class ViewTask extends Activity {
 
@@ -28,13 +27,13 @@ public class ViewTask extends Activity {
         if(intent.hasExtra("position"))
         {
             pos = intent.getIntExtra("position",0);
-            name = taskItems.get(pos).getName();
-            if(taskItems.get(pos).getDetails().equals(""))
+            name = MainActivity.taskItems.get(pos).getName();
+            if(MainActivity.taskItems.get(pos).getDetails().equals(""))
                 detail = "-";
             else
-                detail = taskItems.get(pos).getDetails();
-            date = taskItems.get(pos).getDate();
-            priority = taskItems.get(pos).getPriority();
+                detail = MainActivity.taskItems.get(pos).getDetails();
+            date = MainActivity.taskItems.get(pos).getDate();
+            priority = MainActivity.taskItems.get(pos).getPriority();
         }
         else {
             // default values for date, priority and task detail.

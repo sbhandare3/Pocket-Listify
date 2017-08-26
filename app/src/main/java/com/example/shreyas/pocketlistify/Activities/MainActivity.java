@@ -1,8 +1,9 @@
-package com.example.shreyas.pocketlistify;
+package com.example.shreyas.pocketlistify.Activities;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +17,8 @@ import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.example.shreyas.pocketlistify.IntroductionScreens.PrefManager;
+import com.example.shreyas.pocketlistify.BroadcastReceivers.NotificationReceiver;
+import com.example.shreyas.pocketlistify.R;
 import com.example.shreyas.pocketlistify.UtilityClasses.CustomAdapter;
 import com.example.shreyas.pocketlistify.UtilityClasses.SQLiteDatabaseHelper;
 import com.example.shreyas.pocketlistify.UtilityClasses.TaskItem;
@@ -38,32 +40,37 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         taskItems = new ArrayList<>();
         helper = new SQLiteDatabaseHelper(this);
         listView = (ListView)findViewById(R.id.taskList);
         adapter = new CustomAdapter(this, taskItems);
         listView.setAdapter(adapter);
-
-        // setup notification service
-        //prefManager = new PrefManager(this);
-        //if (prefManager.isFirstTimeStartService()) {
-
-        //}
-
-        //if(!helper.isEmpty())
-        loadData();
-
         switchButton2 = (Switch) findViewById(R.id.switch1);
 
-        switchButton2.setChecked(false);
+        SharedPreferences sharedPrefs = getSharedPreferences("com.pocketlistify.prefs", MODE_PRIVATE);
+        switchButton2.setChecked(sharedPrefs.getBoolean("NameOfThingToSave", false));
+        if(sharedPrefs.getBoolean("NameOfThingToSave", false))
+            switchButton2.setText("Notify Everyday ON");
+        else
+            switchButton2.setText("Notify Everyday OFF");
+
+        loadData();
+
         switchButton2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean bChecked) {
                 if (bChecked) {
-                    switchButton2.setText("Notify ON");
+                    SharedPreferences.Editor editor = getSharedPreferences("com.pocketlistify.prefs", MODE_PRIVATE).edit();
+                    editor.putBoolean("NameOfThingToSave", true);
+                    editor.apply();
+                    switchButton2.setText("Notify Everyday ON");
                     notifyTasks();
                 } else {
-                    switchButton2.setText("Notify OFF");
+                    SharedPreferences.Editor editor = getSharedPreferences("com.pocketlistify.prefs", MODE_PRIVATE).edit();
+                    editor.putBoolean("NameOfThingToSave", false);
+                    editor.apply();
+                    switchButton2.setText("Notify Everyday OFF");
                     unsetNotifyTasks();
                 }
             }
@@ -132,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
         }
     }
+
 
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {

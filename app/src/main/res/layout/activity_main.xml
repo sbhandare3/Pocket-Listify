@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBack"
-    tools:context="com.example.shreyas.pocketlistify.MainActivity">
+    android:background="@color/colorBackDark"
+    tools:context="com.example.shreyas.pocketlistify.Activities.MainActivity">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/button_addTask"
@@ -25,6 +25,7 @@
         android:id="@+id/taskList"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@color/colorBack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -38,7 +39,6 @@
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Notify Me "
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

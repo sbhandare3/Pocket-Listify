@@ -1,4 +1,4 @@
-package com.example.shreyas.pocketlistify.IntroductionScreens;
+package com.example.shreyas.pocketlistify.UtilityClasses;
 
 /**
  * Created by shreyas on 8/11/2017.
@@ -19,7 +19,6 @@ public class PrefManager {
     private static final String PREF_NAME = "androidhive-welcome";
 
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
-    private static final String IS_FIRST_TIME_LAUNCH_SERVICE = "IsFirstTimeLaunchServie";
 
     public PrefManager(Context context) {
         this._context = context;
@@ -34,15 +33,6 @@ public class PrefManager {
 
     public boolean isFirstTimeLaunch() {
         return pref.getBoolean(IS_FIRST_TIME_LAUNCH, true);
-    }
-
-    public void setNotificationService(boolean isFirstTimeStart){
-        editor.putBoolean(IS_FIRST_TIME_LAUNCH_SERVICE,isFirstTimeStart);
-        editor.commit();
-    }
-
-    public boolean isFirstTimeStartService(){
-        return pref.getBoolean(IS_FIRST_TIME_LAUNCH_SERVICE, true);
     }
 
 }
