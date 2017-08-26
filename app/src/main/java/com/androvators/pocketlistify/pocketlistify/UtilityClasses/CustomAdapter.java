@@ -1,4 +1,4 @@
-package com.example.shreyas.pocketlistify.UtilityClasses;
+package com.androvators.pocketlistify.pocketlistify.UtilityClasses;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,9 +12,9 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.shreyas.pocketlistify.Activities.EditTask;
-import com.example.shreyas.pocketlistify.R;
-import com.example.shreyas.pocketlistify.Activities.ViewTask;
+import com.androvators.pocketlistify.pocketlistify.Activities.EditTask;
+import com.androvators.pocketlistify.pocketlistify.R;
+import com.androvators.pocketlistify.pocketlistify.Activities.ViewTask;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

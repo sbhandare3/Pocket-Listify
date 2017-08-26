@@ -1,4 +1,4 @@
-package com.example.shreyas.pocketlistify.BroadcastReceivers;
+package com.androvators.pocketlistify.pocketlistify.BroadcastReceivers;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -7,9 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
-import com.example.shreyas.pocketlistify.Activities.MainActivity;
-import com.example.shreyas.pocketlistify.R;
-import com.example.shreyas.pocketlistify.UtilityClasses.SQLiteDatabaseHelper;
+import com.androvators.pocketlistify.pocketlistify.Activities.MainActivity;
+import com.androvators.pocketlistify.pocketlistify.R;
+import com.androvators.pocketlistify.pocketlistify.UtilityClasses.SQLiteDatabaseHelper;
 
 /**
  * Created by shreyas on 8/12/2017.

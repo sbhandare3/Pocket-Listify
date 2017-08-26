@@ -1,4 +1,4 @@
-package com.example.shreyas.pocketlistify.UtilityClasses;
+package com.androvators.pocketlistify.pocketlistify.UtilityClasses;
 
 /**
  * Created by shreyas on 8/11/2017.

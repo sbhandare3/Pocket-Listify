@@ -1,4 +1,4 @@
-package com.example.shreyas.pocketlistify.Activities;
+package com.androvators.pocketlistify.pocketlistify.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,7 +6,7 @@ import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.shreyas.pocketlistify.R;
+import com.androvators.pocketlistify.pocketlistify.R;
 
 public class ViewTask extends Activity {
 

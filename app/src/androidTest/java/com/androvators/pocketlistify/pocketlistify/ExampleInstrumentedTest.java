@@ -1,4 +1,4 @@
-package com.example.shreyas.pocketlistify;
+package com.androvators.pocketlistify.pocketlistify;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.shreyas.pocketlistify", appContext.getPackageName());
+        assertEquals("com.androvators.pocketlistify.pocketlistify", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package com.example.shreyas.pocketlistify.Activities;
+package com.androvators.pocketlistify.pocketlistify.Activities;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -12,9 +12,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.shreyas.pocketlistify.R;
-import com.example.shreyas.pocketlistify.UtilityClasses.SQLiteDatabaseHelper;
-import com.example.shreyas.pocketlistify.UtilityClasses.TaskItem;
+import com.androvators.pocketlistify.pocketlistify.R;
+import com.androvators.pocketlistify.pocketlistify.UtilityClasses.SQLiteDatabaseHelper;
+import com.androvators.pocketlistify.pocketlistify.UtilityClasses.TaskItem;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

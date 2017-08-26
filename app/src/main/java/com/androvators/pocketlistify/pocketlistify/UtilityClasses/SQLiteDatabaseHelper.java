@@ -1,4 +1,4 @@
-package com.example.shreyas.pocketlistify.UtilityClasses;
+package com.androvators.pocketlistify.pocketlistify.UtilityClasses;
 
 import android.content.ContentValues;
 import android.content.Context;

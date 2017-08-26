@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackDark"
-    tools:context="com.example.shreyas.pocketlistify.Activities.MainActivity">
+    tools:context="com.androvators.pocketlistify.pocketlistify.Activities.MainActivity">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/button_addTask"

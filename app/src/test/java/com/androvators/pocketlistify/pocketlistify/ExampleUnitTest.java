@@ -1,4 +1,4 @@
-package com.example.shreyas.pocketlistify;
+package com.androvators.pocketlistify.pocketlistify;
 
 import org.junit.Test;
 

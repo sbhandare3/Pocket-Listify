@@ -1,4 +1,4 @@
-package com.example.shreyas.pocketlistify.Activities;
+package com.androvators.pocketlistify.pocketlistify.Activities;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -17,11 +17,11 @@ import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.example.shreyas.pocketlistify.BroadcastReceivers.NotificationReceiver;
-import com.example.shreyas.pocketlistify.R;
-import com.example.shreyas.pocketlistify.UtilityClasses.CustomAdapter;
-import com.example.shreyas.pocketlistify.UtilityClasses.SQLiteDatabaseHelper;
-import com.example.shreyas.pocketlistify.UtilityClasses.TaskItem;
+import com.androvators.pocketlistify.pocketlistify.BroadcastReceivers.NotificationReceiver;
+import com.androvators.pocketlistify.pocketlistify.R;
+import com.androvators.pocketlistify.pocketlistify.UtilityClasses.CustomAdapter;
+import com.androvators.pocketlistify.pocketlistify.UtilityClasses.SQLiteDatabaseHelper;
+import com.androvators.pocketlistify.pocketlistify.UtilityClasses.TaskItem;
 
 import java.util.ArrayList;
 import java.util.Calendar;

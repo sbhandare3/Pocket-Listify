@@ -1,4 +1,4 @@
-package com.example.shreyas.pocketlistify.Activities;
+package com.androvators.pocketlistify.pocketlistify.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,8 +14,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.shreyas.pocketlistify.R;
-import com.example.shreyas.pocketlistify.UtilityClasses.PrefManager;
+import com.androvators.pocketlistify.pocketlistify.R;
+import com.androvators.pocketlistify.pocketlistify.UtilityClasses.PrefManager;
 
 public class OnboardActivity extends AppCompatActivity {
 
